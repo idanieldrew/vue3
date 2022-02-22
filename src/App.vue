@@ -1,11 +1,24 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <!-- <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link> -->
+    <h1>{{ s.name }}</h1>
   </div>
-  <router-view/>
+  <!-- <router-view /> -->
 </template>
 
+<script>
+import { count } from './store';
+
+export default {
+  setup() {
+    const s = count()
+
+    s.name
+    return {s}
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
