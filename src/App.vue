@@ -1,11 +1,25 @@
 <template>
   <div id="nav">
+    <button @click="fetchPosts">click</button>
+    
+    {{ store.post }}
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
-  <router-view/>
+  <!-- <router-view/> -->
 </template>
 
+<script lang="ts">
+import { useStore } from "./store";
+export default {
+  setup() {
+    const store = useStore();
+
+    store.fetchPosts;
+    return { fetchPosts: store.fetchPosts,store };
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
