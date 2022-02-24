@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
-    <button @click="fetchPosts">click</button>
-    
-    {{ store.post }}
+    <div v-for="post in posts" :key="post.id">
+      {{ post.title }}
+    </div>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
@@ -15,8 +15,9 @@ export default {
   setup() {
     const store = useStore();
 
-    store.fetchPosts;
-    return { fetchPosts: store.fetchPosts,store };
+    store.fetchPosts();
+
+    return { posts: store.allPosts };
   },
 };
 </script>
