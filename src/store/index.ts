@@ -16,7 +16,7 @@ export const useStore = defineStore({
 
       actions: {
             async fetchPosts() {
-                  let res = await axios.get("https://jsonplaceholder.typicode.com/posts")
+                  let res = await axios.get("https://127.0.0.1")
                   this.post = res.data
             }
       }
