@@ -9,8 +9,8 @@ const url = process.env.VUE_APP_URL
 //       token: ''
 // }
 
-export const auth = defineStore({
-      id: 'auth',
+export const user = defineStore({
+      id: 'user',
       state: () => {
             return {
                   users: []
@@ -25,7 +25,7 @@ export const auth = defineStore({
             async fetchPosts() {
                   let res = await axios.get(`${url}/user/all`)
 
-                  this.users = res.data.data
+                  this.users = res.data
             }
       }
 })

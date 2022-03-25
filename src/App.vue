@@ -1,25 +1,24 @@
 <template>
   <div>
-
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
-  <router-view/> 
+  <router-view />
 </template>
 
 <script lang="ts">
-import { computed } from "vue-demi";
-import { auth } from "./store";
-export default {
-  setup() {
-    const store = auth();
+import { defineComponent, watch } from "vue-demi";
+import { auth } from "./store/auth";
 
-    store.fetchPosts();
-
-    const allUsers = computed(() => store.allUsers);
-    return { allUsers };
-  },
-};
+export default defineComponent({
+  /*setup() {
+    let auths = auth();
+    watch: {
+      console.log(88)
+      auths.setData;
+    }
+  },*/
+});
 </script>
 <style>
 #app {

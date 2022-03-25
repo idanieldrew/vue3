@@ -40,10 +40,10 @@
 
 <script lang="ts">
 import { computed } from "vue-demi";
-import { auth } from "./../store";
+import { user } from "./../store";
 export default {
   setup() {
-    const store = auth();
+    const store = user();
 
     store.fetchPosts();
 
