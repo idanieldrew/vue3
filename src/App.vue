@@ -1,23 +1,30 @@
 <template>
   <div>
+    <p class="bg-white">name: {{ fetch.name ?? "null" }}</p>
+
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link> |
+    <router-link to="/register">Register</router-link>
   </div>
   <router-view />
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from "vue-demi";
+import { defineComponent } from "vue-demi";
 import { auth } from "./store/auth";
 
 export default defineComponent({
-  /*setup() {
-    let auths = auth();
-    watch: {
-      console.log(88)
-      auths.setData;
-    }
-  },*/
+  setup() {
+    const authentication = auth();
+
+    return { setUp: authentication.setData, fetch: authentication.fetchUser };
+  },
+
+  watch: {
+    $route() {
+      this.setUp;
+    },
+  },
 });
 </script>
 <style>
