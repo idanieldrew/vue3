@@ -21,11 +21,11 @@ export const auth = defineStore({
                   let token = JSON.parse(localStorage.getItem('token') || '{}')
                   if (token) {
                         state.isRegister = true,
-                        state.user = user
+                              state.user = user
                         state.token = token
                   } else {
                         state.isRegister = false,
-                        state.token = ''
+                              state.token = ''
                   }
             },
 
@@ -50,7 +50,7 @@ export const auth = defineStore({
                               this.token = response.data.data.token
                               this.reg
                         }).catch(err => {
-                              console.log("error");
+                              console.log("error:", err);
                         })
             }
       }
