@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="bg-white">name: {{ user.name ?? "null" }}</p>
+    <!-- <p class="bg-white">name: {{ user.name ?? "null" }}</p> -->
 
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
@@ -10,7 +10,6 @@
 </template>
 
 <script lang="ts">
-import { mapState } from "pinia";
 import { computed, defineComponent } from "vue-demi";
 import { auth } from "./store/auth";
 
@@ -19,6 +18,8 @@ export default defineComponent({
     const authentication = auth();
 
     let user = computed(() => authentication.fetchUser);
+
+    console.log(user);
 
     return { setUp: authentication.setData, user };
   },

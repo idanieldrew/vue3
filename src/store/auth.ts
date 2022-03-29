@@ -7,25 +7,26 @@ export const auth = defineStore({
       id: "auth",
       state: () => {
             return {
-                  token: '' as string,
-                  isRegister: false,
+                  token: '',
+                  isRegister: false as boolean,
                   user: null as User | null
             }
       },
 
       getters: {
             fetchUser: (state) => state.user,
+
             setData(state) {
                   let user: User = JSON.parse(localStorage.getItem('user') || '{}')
-
                   let token = JSON.parse(localStorage.getItem('token') || '{}')
-                  if (token) {
+
+                  if (typeof token === 'string') {
                         state.isRegister = true,
-                              state.user = user
+                        state.user = user
                         state.token = token
                   } else {
                         state.isRegister = false,
-                              state.token = ''
+                        state.token = ''
                   }
             },
 
