@@ -1,10 +1,13 @@
 <template>
   <form>
     <div>
-      <input type="text" v-model="form.name" placeholder="name" />
+      <input type="text" autocomplete="true" v-model="form.name" placeholder="name" />
     </div>
     <div>
       <input type="email" v-model="form.email" placeholder="email" />
+    </div>
+    <div>
+      <input type="number" v-model="form.phone" placeholder="phone" />
     </div>
     <div>
       <input type="password" v-model="form.password" placeholder="password" />
@@ -21,7 +24,8 @@ import { defineComponent } from "vue-demi";
 interface Form {
   name: string;
   email: string;
-  password: string;
+  phone: number
+  password: string
 }
 
 export default defineComponent({
@@ -30,6 +34,7 @@ export default defineComponent({
       form: {
         name: "",
         email: "",
+        phone: 0,
         password: "",
       } as Form,
     };

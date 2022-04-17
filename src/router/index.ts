@@ -36,6 +36,13 @@ const routes: Array<RouteRecordRaw> = [
   },
 
   {
+    path: '/posts',
+    name: 'Posts',
+    component: () => import( '../views/Posts.vue')
+  },
+
+
+  {
     path: '/update/:name',
     name: 'Update',
     component: () => import('../views/Update.vue')
@@ -51,23 +58,18 @@ router.beforeEach((to, from, next) => {
   const store = auth()
   if (to.matched.some(record => record.meta.auth)) {
     if (!store.isRegister) {
-      console.log(store, 1)
       next({ name: 'Register' })
     } else {
-      console.log(2)
       next()
     }
   } else if (to.matched.some(record => record.meta.authRedirect)) {
     if (!store.isRegister) {
-      console.log(8952, 1)
       next()
     } else {
-      console.log(2)
       next({name:"About"})
     }
   }
   else {
-    console.log(3)
     next()
   }
 })

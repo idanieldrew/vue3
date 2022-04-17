@@ -19,8 +19,6 @@ export default defineComponent({
 
     let user = computed(() => authentication.fetchUser);
 
-    console.log(user);
-
     return { setUp: authentication.setData, user };
   },
 
