@@ -12,7 +12,7 @@ app.use(pinia)
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '/user',
     name: 'Home',
     component: Home,
     meta: {
@@ -36,11 +36,16 @@ const routes: Array<RouteRecordRaw> = [
   },
 
   {
-    path: '/posts',
+    path: '/',
     name: 'Posts',
     component: () => import( '../views/Posts.vue')
   },
 
+  {
+    path: '/:post',
+    name: 'Post',
+    component: () => import( '../views/Post.vue')
+  },
 
   {
     path: '/update/:name',

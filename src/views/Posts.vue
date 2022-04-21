@@ -12,26 +12,15 @@
       <tr class="bg-gray-300">
         <th class="border-2 border-red-500 text-black py-5">Title</th>
         <th class="border-red-500 border-2 text-black py-5">Details</th>
+        <th class="border-red-500 border-2 text-black py-5">Description</th>
         <th class="border-red-500 border-2 text-black py-5">Update</th>
         <th class="border-red-500 border-2 text-black py-5">Delete</th>
       </tr>
       </thead>
       <tbody>
       <tr v-for="post in allPosts" :key="post.id" class="bg-gray-700">
-        <td class="border border-slate-700 text-white py-3">
-          {{ post.title }}
-        </td>
-        <td class="border border-slate-700 text-white">{{ post.details }}</td>
-        <td class="border border-slate-700 text-white">
-          <router-link
-              class="hover:text-green-400"
-              :to="'/update/' + post.slug"
-          >Update</router-link
-          >
-        </td>
-        <td class="border border-slate-700 text-white">
-          <router-link class="hover:text-red-400" to="/">Delete</router-link>
-        </td>
+        <PostComponent :title="post.title" :slug="post.slug" :details="post.details"
+                       :description="post.description"></PostComponent>
       </tr>
       </tbody>
     </table>
@@ -39,11 +28,15 @@
 </template>
 
 <script lang="ts">
+import PostComponent from "@/components/Post.vue";
 import {computed, defineComponent} from "vue";
 import {post} from "@/store/post";
 
 export default defineComponent({
   name: "Post",
+  components: {
+    PostComponent
+  },
   setup() {
     const posts = post();
 
