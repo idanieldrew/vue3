@@ -46,7 +46,7 @@ export const auth = defineStore({
 
     actions: {
         register(value: string) {
-            axios.post<any>(`${url}/auth/register`, value)
+            axios.post<any>(`${url}/auth/register.v2`, value)
                 .then(response => {
                     this.user = response.data.user
                     this.token = response.data.token

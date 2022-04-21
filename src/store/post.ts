@@ -22,7 +22,7 @@ export const post = defineStore({
         async fetchPosts(){
             let res = await  axios.get<any>(`${url}/post/all`)
 
-            this.posts = res.data.data
+            this.posts = res.data
         }
     }
 })
