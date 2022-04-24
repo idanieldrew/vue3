@@ -3,11 +3,6 @@ import axios from "axios";
 
 const url = process.env.VUE_APP_URL
 
-// export type State = {
-//       isAuth: false,
-//       token: ''
-// }
-
 export const user = defineStore({
       id: 'user',
       state: () => {

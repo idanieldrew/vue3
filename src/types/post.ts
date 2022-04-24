@@ -1,6 +1,13 @@
 export interface Post {
-      userId: number,
-      id: number,
       title: string,
-      body: string
+      slug: string
+      details: string
+      description: string
+      user: User
+      created_at: string
+}
+
+interface User {
+      name: string
+      email: string
 }
