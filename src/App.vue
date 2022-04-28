@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue-demi";
+import { computed, defineComponent } from "vue";
 import { auth } from "./store/auth";
 
 export default defineComponent({
