@@ -19,7 +19,7 @@ export const post = defineStore({
             this.posts = res.data
         },
 
-        async fetchPost(slug: string) {
+        async fetchPost(slug: any) {
             let res = await axios.get<AxiosResponse>(`${url}/post/${slug}`)
             this.post = res.data.data
         }

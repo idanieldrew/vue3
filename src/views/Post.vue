@@ -31,7 +31,7 @@ export default defineComponent({
     const route = useRoute()
     const singlePost = post();
 
-    singlePost.fetchPost(route.params.post)
+     singlePost.fetchPost(route.params.post)
 
     let p = computed(() => singlePost.post)
     return {p}

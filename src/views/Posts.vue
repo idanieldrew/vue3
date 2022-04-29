@@ -27,26 +27,18 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+
 import PostComponent from "@/components/Post.vue";
-import {computed, defineComponent} from "vue";
+import {computed} from "vue";
 import {post} from "@/store/post";
 
-export default defineComponent({
-  name: "Post",
-  components: {
-    PostComponent
-  },
-  setup() {
-    const posts = post();
+const posts = post();
 
-    posts.fetchPosts();
+posts.fetchPosts();
 
-    const allPosts = computed(() => posts.posts)
+const allPosts = computed(() => posts.posts)
 
-    return {allPosts}
-  }
-})
 </script>
 
 <style scoped>
