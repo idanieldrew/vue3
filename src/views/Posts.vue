@@ -37,8 +37,7 @@ const posts = post();
 
 posts.fetchPosts();
 
-const allPosts = computed(() => posts.posts)
-
+let allPosts = computed(() => posts.posts)
 </script>
 
 <style scoped>

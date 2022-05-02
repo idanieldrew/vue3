@@ -20,23 +20,18 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+
 import {post} from "@/store/post";
-import {computed, defineComponent} from "vue";
+import {computed} from "vue";
 import {useRoute} from "vue-router";
 
-export default defineComponent({
-  name: "singlePost",
-  setup() {
-    const route = useRoute()
-    const singlePost = post();
+const route = useRoute()
+const singlePost = post();
 
-     singlePost.fetchPost(route.params.post)
+singlePost.fetchPost(route.params.post)
 
-    let p = computed(() => singlePost.post)
-    return {p}
-  }
-})
+let p = computed(() => singlePost.post)
 </script>
 
 <style scoped>
