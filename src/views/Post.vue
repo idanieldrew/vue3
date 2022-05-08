@@ -1,20 +1,20 @@
 <template>
   <div>
     <h1>
-      {{ p.title }}
+      {{ specialPost.value.title }}
       |
-      {{ p.details }}
+      {{ specialPost.value.details }}
       |
-      {{ p.description }}
+      {{ specialPost.value.description }}
     </h1>
     <p>
       {{
-        p.user.email
+        specialPost.value.user.email
       }}
     </p>
     <p>
       {{
-        p.user.name
+        specialPost.value.user.name
       }}
     </p>
   </div>
@@ -23,15 +23,17 @@
 <script setup lang="ts">
 
 import {post} from "@/store/post";
-import {computed} from "vue";
+import {computed, ref} from "vue";
 import {useRoute} from "vue-router";
 
 const route = useRoute()
 const singlePost = post();
 
+let specialPost = ref();
+
 singlePost.fetchPost(route.params.post)
 
-let p = computed(() => singlePost.post)
+specialPost.value = computed(() => singlePost.post)
 </script>
 
 <style scoped>
