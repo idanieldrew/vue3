@@ -18,7 +18,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="post in allPosts" :key="post.id" class="bg-gray-700">
+      <tr v-for="post in allPosts.value" :key="post.id" class="bg-gray-700">
         <PostComponent :title="post.title" :slug="post.slug" :details="post.details"
                        :description="post.description"></PostComponent>
       </tr>
@@ -30,14 +30,16 @@
 <script setup lang="ts">
 
 import PostComponent from "@/components/Post.vue";
-import {computed} from "vue";
+import {computed, reactive, ref} from "vue";
 import {post} from "@/store/post";
 
 const posts = post();
 
+let allPosts = ref()
+
 posts.fetchPosts();
 
-let allPosts = computed(() => posts.posts)
+allPosts.value = computed(() => posts.posts)
 </script>
 
 <style scoped>
