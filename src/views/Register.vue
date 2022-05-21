@@ -16,6 +16,8 @@ export default defineComponent({
 
   methods: {
     register(value: any) {
+      console.log(value);
+
       let auths = auth();
 
       try {

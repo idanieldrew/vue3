@@ -1,7 +1,12 @@
 <template>
   <form>
     <div>
-      <input type="text" autocomplete="true" v-model="form.name" placeholder="name" />
+      <input
+        type="text"
+        autocomplete="true"
+        v-model="form.name"
+        placeholder="name"
+      />
     </div>
     <div>
       <input type="email" v-model="form.email" placeholder="email" />
@@ -18,32 +23,19 @@
   </form>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue-demi";
+<script lang="ts" setup>
+import { reactive, defineEmits } from "vue";
 
-interface Form {
-  name: string;
-  email: string;
-  phone: number
-  password: string
-}
+const emit = defineEmits(["doRegister"]);
 
-export default defineComponent({
-  data() {
-    return {
-      form: {
-        name: "",
-        email: "",
-        phone: 0,
-        password: "",
-      } as Form,
-    };
-  },
-  
-  methods: {
-    register(): void {
-      this.$emit("doRegister", this.form);
-    },
-  },
+let form = reactive({
+  name: "",
+  email: "",
+  phone: "",
+  password: "",
 });
+
+function register(): void {
+  emit("doRegister", form);
+}
 </script>
