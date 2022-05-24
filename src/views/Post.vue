@@ -8,34 +8,28 @@
       {{ specialPost.value.description }}
     </h1>
     <p>
-      {{
-        specialPost.value.user.email
-      }}
+      {{ specialPost.value.user.email }}
     </p>
     <p>
-      {{
-        specialPost.value.user.name
-      }}
+      {{ specialPost.value.user.name }}
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
+import { post } from "@/store/post";
+import { computed, ref } from "vue";
+import { useRoute } from "vue-router";
 
-import {post} from "@/store/post";
-import {computed, ref} from "vue";
-import {useRoute} from "vue-router";
-
-const route = useRoute()
+const route = useRoute();
 const singlePost = post();
 
 let specialPost = ref();
 
-singlePost.fetchPost(route.params.post)
+singlePost.fetchPost(route.params.post);
 
-specialPost.value = computed(() => singlePost.post)
+specialPost.value = computed(() => singlePost.post);
 </script>
 
 <style scoped>
-
 </style>
